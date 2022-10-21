@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Schema;
+const validator = require('validator');
+const { ObjectId } = mongoose.Schema.Types;
 const productSchema = mongoose.Schema({
     name: {
         type: String,
@@ -9,11 +10,11 @@ const productSchema = mongoose.Schema({
         minLength: [3, "Name must be atleast 3 characters long!"],
         maxLength: [100, "Name is too large"]
     },
-    description: {
+     description: {
         type: String,
-        required: true,
+        required: true
 
-    },
+    }, 
     unit: {
         type: String,
         required: true,
@@ -39,18 +40,18 @@ const productSchema = mongoose.Schema({
 
                 },
                 message: "Please provide valid image url"
-            },
-            category: { type: String, required: true },
-            brand: {
-                name: { type: String, required: true },
-                id: {
-                    type: ObjectId,
-                    ref: "Brand",
-                    required: true
-                }
             }
         }
-    ]
+    ],
+    category: { type: String, required: true },
+    brand: {
+        name: { type: String, required: true },
+        id: {
+            type: ObjectId,
+            ref: "Brand",
+            required: true
+        }
+    }
 }, {
     timestamps: true
 })
