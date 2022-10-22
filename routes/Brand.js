@@ -4,4 +4,4 @@ const router = express.Router()
 router.get('/', getBrands)
 router.post("/brand", createBrand)
 router.patch("/brand/:id", updateBrand)
-module.exports = router;
+module.exports = router; 

@@ -13,7 +13,7 @@ const stockSchema = mongoose.Schema({
         type: String,
         required: [true, "Please provide a valid name for this product"],
         trim: true,
-        unique: true,
+       /*  unique: true, */
         minLength: [3, "Name must be at least 3 characters."],
         maxLength: [100, "Name is too large"]
     },
@@ -31,7 +31,7 @@ const stockSchema = mongoose.Schema({
     },
     imageURLs: [{
         type: String,
-        requied: true,
+        required: true,
         validate: {
             validator: (value) => {
                 if (!Array.isArray(value)) return false;
@@ -109,7 +109,13 @@ const stockSchema = mongoose.Schema({
             required: true,
             ref: "Supplier"
         },
+    },
+    sellCount: {
+        type: Number,
+        default: 0,
+        min: 0
     }
+
 
     /*  supplier: {
        type: mongoose.Schema.Types.ObjectId,
